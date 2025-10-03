@@ -7,6 +7,13 @@
       "config": {
         "distDir": "dist"
       }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxDuration": 30
+      }
     }
   ],
   "routes": [
@@ -24,10 +31,5 @@
     "SUPABASE_ANON_KEY": "@supabase_anon_key",
     "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
     "JWT_SECRET": "@jwt_secret"
-  },
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 30
-    }
   }
 }
