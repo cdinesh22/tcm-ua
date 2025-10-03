@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+const { createClient } = require('@supabase/supabase-js')
 
 const supabaseUrl = process.env.SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -8,7 +8,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
 }
 
 // Create Supabase client with service role key for server-side operations
-export const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
     persistSession: false
@@ -16,7 +16,7 @@ export const supabase = createClient(supabaseUrl, supabaseServiceKey, {
 })
 
 // Helper function to get user from JWT token
-export async function getUserFromToken(token) {
+async function getUserFromToken(token) {
   try {
     const { data: { user }, error } = await supabase.auth.getUser(token)
     if (error) throw error
@@ -28,7 +28,7 @@ export async function getUserFromToken(token) {
 }
 
 // Helper function to verify admin role
-export async function verifyAdminRole(userId) {
+async function verifyAdminRole(userId) {
   try {
     const { data, error } = await supabase
       .from('users')
@@ -45,7 +45,7 @@ export async function verifyAdminRole(userId) {
 }
 
 // Helper function to handle API responses
-export function createResponse(data, status = 200) {
+function createResponse(data, status = 200) {
   return {
     statusCode: status,
     headers: {
@@ -59,9 +59,17 @@ export function createResponse(data, status = 200) {
 }
 
 // Helper function to handle errors
-export function createErrorResponse(message, status = 500) {
+function createErrorResponse(message, status = 500) {
   return createResponse({
     success: false,
     message
   }, status)
+}
+
+module.exports = {
+  supabase,
+  getUserFromToken,
+  verifyAdminRole,
+  createResponse,
+  createErrorResponse
 }

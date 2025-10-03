@@ -1,6 +1,6 @@
-import { supabase, createResponse, createErrorResponse } from '../utils/supabase.js'
+const { supabase, createResponse, createErrorResponse } = require('../utils/supabase.js')
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end()
