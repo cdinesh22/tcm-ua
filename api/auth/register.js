@@ -60,7 +60,7 @@ module.exports = async function handler(req, res) {
       .from('users')
       .select('id')
       .or(`email.eq.${email},phone.eq.${phone}`)
-      .single()
+      .maybeSingle()
 
     if (existingUser) {
       return res.status(400).json({
