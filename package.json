@@ -1,0 +1,28 @@
+{
+  "name": "temple-crowd-management-api",
+  "version": "1.0.0",
+  "description": "Vercel serverless API for Temple Crowd Management System",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for Vercel functions'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "keywords": [
+    "temple",
+    "crowd-management",
+    "pilgrimage",
+    "booking",
+    "vercel",
+    "supabase"
+  ],
+  "author": "SIH Team",
+  "license": "MIT"
+}
